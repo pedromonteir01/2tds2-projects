@@ -1,3 +1,5 @@
+const posts = [];
+
 function savePost() {
     const title = document.getElementById("title").value;
     const category = document.getElementById("category").value;
@@ -6,6 +8,7 @@ function savePost() {
     const date = document.getElementById("date").value;
 
     cleanFields();
+    storePost(title, category, resume, author, date);
 }
 
 function cleanFields() {
@@ -14,4 +17,16 @@ function cleanFields() {
     document.getElementById("resume").value = "";
     document.getElementById("publisher").value = "";
     document.getElementById("date").value = "";
+}
+
+function storePost(title, category, resume, author, date) {
+    const post = {
+        title: title,
+        category: category,
+        resume: resume,
+        author: author,
+        date: date
+    };
+
+    posts.push(post);
 }
