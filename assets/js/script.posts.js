@@ -7,8 +7,13 @@ function savePost() {
     const author = document.getElementById("publisher").value;
     const date = document.getElementById("date").value;
 
-    cleanFields();
-    storePost(title, category, resume, author, date);
+    if(title && category && resume && author && date) {
+        storePost(title, category, resume, author, date);
+        cleanFields();
+        showPosts();
+    } else {
+        alert("Preencha todos os campos!");
+    }
 }
 
 function cleanFields() {
@@ -21,12 +26,33 @@ function cleanFields() {
 
 function storePost(title, category, resume, author, date) {
     const post = {
-        title: title,
-        category: category,
-        resume: resume,
-        author: author,
-        date: date
+        title,
+        category,
+        resume,
+        author,
+        date
     };
 
     posts.push(post);
+}
+
+function showPosts() {
+    let showContent = "";
+
+    posts.forEach((post, index) =>{
+        showContent += `
+            <div class="itemPost">
+                <h2>${post.title}</h2>
+                <p><b>Categoria:</b>${post.category}</p>
+                <p><b>Resumo:</b>${post.resume}</p>
+                <p><b>Autor:</b>${post.author}</p>
+                <p><b>Data de publicação:</b>${post.date}</p>
+
+                <button onclick="editPost(${index})">Editar</button>
+                <button onclick="deletePost(${index})">Excluir</button>
+            </div>
+        `;
+    });
+
+    document.getElementById("list").innerHTML = showContent;
 }
