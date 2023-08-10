@@ -5,9 +5,7 @@
 }
 
 body {
-    background-image: url("../images/WhatsApp\ Image\ 2023-08-08\ at\ 08.19.39.jpeg");
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: #101010;
 }
 
 h1 {
@@ -114,10 +112,20 @@ button:hover {
 }
 
 input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    font-size: 1.3rem;
+    color: #f8fafc;
+    padding: 0 0.5rem;
     outline: none;
-    background-color: #3b3b3b;
-    color: #fff;
 }
+
+.input-field input::-webkit-outer-spin-button,
+.input-field input::-webkit-inner-spin-button {
+    appearance: none;
+}
+
 
 textarea {
     outline: none;
